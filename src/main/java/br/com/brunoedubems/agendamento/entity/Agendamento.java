@@ -17,7 +17,7 @@ public class Agendamento {
     private String nomeCidadao;
 
     @Column(nullable = false, unique = true	)
-    private String cpf;
+    private Integer cpf;
     private String logradouro;
     private String numero;
     private String bairro;
