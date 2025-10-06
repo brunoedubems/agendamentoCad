@@ -3,9 +3,9 @@ spring:
     name: agendamentoDeEntrevista
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/${DB_NAME}
-    username: ${DB_NAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/agendamento
+    username: postgres
+    password: 123456
     driver-class-name: org.postgresql.Driver
 
   jpa:
