@@ -17,7 +17,7 @@ public class Agendamento {
     private String nomeCidadao;
 
     @Column(nullable = false, unique = true	)
-    private Integer cpf;
+    private String cpf;
     private String logradouro;
     private String numero;
     private String bairro;
@@ -36,10 +36,131 @@ public class Agendamento {
     private Entrevistador entrevistador;
 
     @Column(name = "criado_em", nullable = false, updatable = false)
-    private LocalDateTime criadoEm = LocalDateTime.now();
+    private LocalDateTime criadoEm;
 
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
 
+    public Agendamento() {
+    }
 
+    public Agendamento(Long id, String nomeCidadao, String cpf, String logradouro, String numero, String bairro, String nis, String telefone, LocalDateTime dataHoraEntrevista, StatusAgendamento status, Entrevistador entrevistador, LocalDateTime criadoEm, LocalDateTime atualizadoEm) {
+        this.id = id;
+        this.nomeCidadao = nomeCidadao;
+        this.cpf = cpf;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.nis = nis;
+        this.telefone = telefone;
+        this.dataHoraEntrevista = dataHoraEntrevista;
+        this.status = status;
+        this.entrevistador = entrevistador;
+        this.criadoEm = criadoEm;
+        this.atualizadoEm = atualizadoEm;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNomeCidadao() {
+        return nomeCidadao;
+    }
+
+    public void setNomeCidadao(String nomeCidadao) {
+        this.nomeCidadao = nomeCidadao;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getNis() {
+        return nis;
+    }
+
+    public void setNis(String nis) {
+        this.nis = nis;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public LocalDateTime getDataHoraEntrevista() {
+        return dataHoraEntrevista;
+    }
+
+    public void setDataHoraEntrevista(LocalDateTime dataHoraEntrevista) {
+        this.dataHoraEntrevista = dataHoraEntrevista;
+    }
+
+    public StatusAgendamento getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusAgendamento status) {
+        this.status = status;
+    }
+
+    public Entrevistador getEntrevistador() {
+        return entrevistador;
+    }
+
+    public void setEntrevistador(Entrevistador entrevistador) {
+        this.entrevistador = entrevistador;
+    }
+
+    public LocalDateTime getCriadoEm() {
+        return criadoEm;
+    }
+
+    public void setCriadoEm(LocalDateTime criadoEm) {
+        this.criadoEm = criadoEm;
+    }
+
+    public LocalDateTime getAtualizadoEm() {
+        return atualizadoEm;
+    }
+
+    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
+        this.atualizadoEm = atualizadoEm;
+    }
 }
