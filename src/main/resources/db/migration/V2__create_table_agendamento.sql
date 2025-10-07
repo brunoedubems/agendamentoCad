@@ -5,12 +5,12 @@ CREATE TABLE agendamento (
     logradouro VARCHAR(255),
     numero VARCHAR(50),
     bairro VARCHAR(255),
-    nis VARCHAR(50),
+    nis VARCHAR(11),
     telefone VARCHAR(20),
-    data_hora_entrevista TIMESTAMP NOT NULL,
+    data_hora_entrevista TIMESTAMP,
     status VARCHAR(50) NOT NULL,
     entrevistador_id BIGINT NOT NULL,
-    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP,
     CONSTRAINT fk_agendamento_entrevistador
         FOREIGN KEY (entrevistador_id)
