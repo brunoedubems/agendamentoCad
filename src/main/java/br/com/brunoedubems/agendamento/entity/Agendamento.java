@@ -4,6 +4,7 @@ import br.com.brunoedubems.agendamento.enums.StatusAgendamento;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "agendamento")
@@ -163,4 +164,20 @@ public class Agendamento {
     public void setAtualizadoEm(LocalDateTime atualizadoEm) {
         this.atualizadoEm = atualizadoEm;
     }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Agendamento that = (Agendamento) o;
+        return Objects.equals(id, that.id) && Objects.equals(nomeCidadao, that.nomeCidadao) && Objects.equals(cpf, that.cpf) && Objects.equals(logradouro, that.logradouro) && Objects.equals(numero, that.numero) && Objects.equals(bairro, that.bairro) && Objects.equals(nis, that.nis) && Objects.equals(telefone, that.telefone) && Objects.equals(dataHoraEntrevista, that.dataHoraEntrevista) && status == that.status && Objects.equals(entrevistador, that.entrevistador) && Objects.equals(criadoEm, that.criadoEm) && Objects.equals(atualizadoEm, that.atualizadoEm);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nomeCidadao, cpf, logradouro, numero, bairro, nis, telefone, dataHoraEntrevista, status, entrevistador, criadoEm, atualizadoEm);
+    }
+
+
 }

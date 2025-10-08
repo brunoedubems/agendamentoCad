@@ -2,9 +2,6 @@ package br.com.brunoedubems.agendamento.dto.agendamento;
 
 import br.com.brunoedubems.agendamento.enums.StatusAgendamento;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDateTime;
 

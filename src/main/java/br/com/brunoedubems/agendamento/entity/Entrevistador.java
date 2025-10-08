@@ -3,6 +3,7 @@ package br.com.brunoedubems.agendamento.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "entrevistador")
@@ -15,7 +16,7 @@ public class Entrevistador {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true	)
+    @Column(nullable = false, unique = true)
     private String cpf;
 
     @Column(nullable = false)
@@ -98,4 +99,15 @@ public class Entrevistador {
         atualizadoEm = LocalDateTime.now();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Entrevistador that = (Entrevistador) o;
+        return ativo == that.ativo && Objects.equals(id, that.id) && Objects.equals(nome, that.nome) && Objects.equals(cpf, that.cpf) && Objects.equals(criadoEm, that.criadoEm) && Objects.equals(atualizadoEm, that.atualizadoEm);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, cpf, ativo, criadoEm, atualizadoEm);
+    }
 }
