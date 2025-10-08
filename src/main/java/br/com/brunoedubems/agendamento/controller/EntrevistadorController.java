@@ -3,14 +3,17 @@ package br.com.brunoedubems.agendamento.controller;
 import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorRequest;
 import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResponse;
 import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResumo;
+import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoResponse;
 import br.com.brunoedubems.agendamento.service.EntrevistadorService;
 import jakarta.validation.Valid;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
