@@ -1,0 +1,14 @@
+[33m9a287da[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m HEAD@{0}: reset: moving to 9a287da
+[33med1fc8e[m HEAD@{1}: checkout: moving from 9a287dac5a512e18f4c22592a0eaaa6b4dce10b4 to develop
+[33m9a287da[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m HEAD@{2}: checkout: moving from develop to 9a287da
+[33med1fc8e[m HEAD@{3}: reset: moving to HEAD^
+[33m9a287da[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m)[m HEAD@{4}: commit: feature: cria os DTOs do Entrevistador e o mapper
+[33med1fc8e[m HEAD@{5}: commit: chore(config): remove as variáveis de ambiente temporariamente
+[33mfc1ac87[m HEAD@{6}: commit: fix(agendamento):altera o tipo da variável cpf de String para Integer
+[33m0518dd0[m HEAD@{7}: commit: feat(database): cria tabela de entrevistador e agendamento.
+[33m987d977[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{8}: checkout: moving from main to develop
+[33m987d977[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{9}: checkout: moving from main to main
+[33m987d977[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{10}: checkout: moving from develop to main
+[33m987d977[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{11}: commit: feat: cria o enum para o status da entrevista
+[33m829517a[m HEAD@{12}: commit: feat: cria as entidade de agendamento e entrevistador
+[33mcf13a26[m HEAD@{13}: commit (initial): chore: configura o projeto

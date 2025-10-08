@@ -3,13 +3,17 @@ package br.com.brunoedubems.agendamento.controller;
 import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorRequest;
 import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResponse;
 import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResumo;
+import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoResponse;
 import br.com.brunoedubems.agendamento.service.EntrevistadorService;
-import org.springframework.http.HttpStatus;
 import jakarta.validation.Valid;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -25,7 +29,9 @@ public class EntrevistadorController {
     @PostMapping
     public ResponseEntity<EntrevistadorResponse> create(@Valid @RequestBody EntrevistadorRequest entrevistadorRequest) {
         EntrevistadorResponse saved = entrevistadorService.save(entrevistadorRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(saved.id()).toUri();
+        return ResponseEntity.created(uri).body(saved);
     }
 
     @PutMapping("/{id}")
@@ -37,6 +43,11 @@ public class EntrevistadorController {
     @GetMapping
     public ResponseEntity<List<EntrevistadorResponse>> findAll(){
         return ResponseEntity.ok(entrevistadorService.findAll());
+    }
+
+    @GetMapping("/lista")
+    public ResponseEntity<List<EntrevistadorResumo>> findEntrevistadores(){
+        return ResponseEntity.ok(entrevistadorService.findEntrevistadores());
     }
 
     @GetMapping("/{id}")

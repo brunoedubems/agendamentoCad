@@ -12,6 +12,9 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -37,8 +40,8 @@ public class AgendamentoService {
     }
 
     @Transactional(readOnly = true)
-    public List<AgendamentoResponse> findAll(){
-        return  agendamentoRepository.findAll()
+    public List<AgendamentoResponse> findAll() {
+        return agendamentoRepository.findAll()
                 .stream()
                 .map(mapper::toResponse).toList();
     }
@@ -49,14 +52,27 @@ public class AgendamentoService {
         return mapper.toResponse(agendamento);
     }
 
+    @Transactional()
     public AgendamentoResponse update(Long id, AgendamentoUpdate entrevistadorRequest) {
         Agendamento entity = agendamentoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Agendamento não encontrado com ID: " + id));
         Agendamento entidadeAtualizada = mapper.updateEntityFromDto(entrevistadorRequest, entity);
         return mapper.toResponse(agendamentoRepository.save(entidadeAtualizada));
     }
 
+    @Transactional()
     public void delete(Long id) {
         agendamentoRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+        public List<AgendamentoResponse> buscarPorDataOuPeriodo(LocalDate inicio, LocalDate fim) {
+        LocalDateTime inicioDoDia = inicio.atStartOfDay();
+        LocalDateTime fimDoDia = (fim != null) ? fim.atTime(LocalTime.MAX) : inicio.atTime(LocalTime.MAX);
+
+        return agendamentoRepository.findByDataHoraEntrevistaBetween(inicioDoDia, fimDoDia)
+                .stream()
+                .map(mapper::toResponse).toList();
+
     }
 
 }

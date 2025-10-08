@@ -3,15 +3,17 @@ package br.com.brunoedubems.agendamento.controller;
 import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoRequest;
 import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoResponse;
 import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoUpdate;
-import br.com.brunoedubems.agendamento.entity.Agendamento;
-import br.com.brunoedubems.agendamento.entity.Entrevistador;
 import br.com.brunoedubems.agendamento.service.AgendamentoService;
-import br.com.brunoedubems.agendamento.service.EntrevistadorService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
+import org.springframework.cglib.core.Local;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -19,17 +21,19 @@ import java.util.List;
 public class AgendamentoController {
 
     private final AgendamentoService agendamentoService;
-    private final EntrevistadorService entrevistadorService;
 
-    public AgendamentoController(AgendamentoService agendamentoService, EntrevistadorService entrevistadorService) {
+    public AgendamentoController(AgendamentoService agendamentoService) {
         this.agendamentoService = agendamentoService;
-        this.entrevistadorService = entrevistadorService;
     }
 
     @PostMapping
     public ResponseEntity<AgendamentoResponse> criar(@Valid @RequestBody AgendamentoRequest agendamentoRequest) {
         AgendamentoResponse agendamentoSalvo = agendamentoService.save(agendamentoRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(agendamentoSalvo);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(agendamentoSalvo.id()).toUri();
+        return ResponseEntity.created(uri).body(agendamentoSalvo);
     }
 
     @GetMapping()
@@ -54,5 +58,16 @@ public class AgendamentoController {
         return ResponseEntity.noContent().build();
     }
 
-
+    @GetMapping("/buscar")
+    public ResponseEntity<List<AgendamentoResponse>> buscarPorDataOuPeriodo(
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+            LocalDate inicio,
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+            LocalDate fim
+    ) {
+        List<AgendamentoResponse> resultados = agendamentoService.buscarPorDataOuPeriodo(inicio, fim);
+        return ResponseEntity.ok(resultados);
+    }
 }
