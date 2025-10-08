@@ -33,4 +33,13 @@ public class EntrevistadorMapper {
         return entity;
     }
 
+    public EntrevistadorResumo toResponseResume(Entrevistador entity) {
+        return new EntrevistadorResumo(
+                entity.getId(),
+                entity.getNome()
+        );
+    }
+
+
+
 }

@@ -42,6 +42,14 @@ public class EntrevistadorService {
     }
 
     @Transactional(readOnly = true)
+    public List<EntrevistadorResumo> findEntrevistadores() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toResponseResume)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
     public EntrevistadorResponse findById(Long id) {
         Entrevistador entrevistador = repository.findById(id).orElseThrow(() -> new RuntimeException("Entrevistador não encontrado com ID: " + id));
         return mapper.toResponse(entrevistador);
@@ -51,7 +59,6 @@ public class EntrevistadorService {
         Entrevistador entrevistador = repository.findById(id).orElseThrow(() -> new RuntimeException("Entrevistador não encontrado com ID: " + id));
         entrevistador.setAtivo(false);
     }
-
 
 
 }

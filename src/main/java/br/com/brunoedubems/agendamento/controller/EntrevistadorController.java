@@ -42,6 +42,11 @@ public class EntrevistadorController {
         return ResponseEntity.ok(entrevistadorService.findAll());
     }
 
+    @GetMapping("/lista")
+    public ResponseEntity<List<EntrevistadorResumo>> findEntrevistadores(){
+        return ResponseEntity.ok(entrevistadorService.findEntrevistadores());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<EntrevistadorResponse> findById(@PathVariable  Long id){
         return ResponseEntity.ok(entrevistadorService.findById(id));
