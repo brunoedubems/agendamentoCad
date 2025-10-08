@@ -165,7 +165,16 @@ public class Agendamento {
         this.atualizadoEm = atualizadoEm;
     }
 
+    @PrePersist
+    protected void onCreate() {
+        criadoEm = LocalDateTime.now();
+        atualizadoEm = LocalDateTime.now();
+    }
 
+    @PreUpdate
+    protected void onUpdate() {
+        atualizadoEm = LocalDateTime.now();
+    }
 
     @Override
     public boolean equals(Object o) {
