@@ -1,4 +1,4 @@
-package br.com.brunoedubems.agendamento.dto.Entrevistador;
+package br.com.brunoedubems.agendamento.dto.entrevistador;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,4 +14,11 @@ public record EntrevistadorRequest(
         @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos numéricos")
         String cpf,
         Boolean ativo
-) { }
+) {
+    public EntrevistadorRequest {
+        if (ativo == null) {
+            ativo = true;
+        }
+    }
+
+}
