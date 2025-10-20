@@ -1,6 +1,6 @@
 package br.com.brunoedubems.agendamento.mapper;
 
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResumo;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorResumo;
 import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoRequest;
 import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoResponse;
 import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoUpdate;

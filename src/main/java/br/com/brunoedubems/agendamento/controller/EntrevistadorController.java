@@ -1,23 +1,21 @@
 package br.com.brunoedubems.agendamento.controller;
 
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorRequest;
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResponse;
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResumo;
-import br.com.brunoedubems.agendamento.dto.agendamento.AgendamentoResponse;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorRequest;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorResponse;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorResumo;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorUpdateRequest;
 import br.com.brunoedubems.agendamento.service.EntrevistadorService;
 import jakarta.validation.Valid;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/entrevistador")
+@RequestMapping("/api/entrevistadores")
 public class EntrevistadorController {
 
     private final EntrevistadorService entrevistadorService;
@@ -36,7 +34,7 @@ public class EntrevistadorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<EntrevistadorResponse> update( @PathVariable Long id,
-                                                         @RequestBody @Valid EntrevistadorResumo entrevistadorRequest) {
+                                                         @Valid @RequestBody EntrevistadorUpdateRequest entrevistadorRequest) {
         return ResponseEntity.ok(entrevistadorService.update(id, entrevistadorRequest));
     }
 

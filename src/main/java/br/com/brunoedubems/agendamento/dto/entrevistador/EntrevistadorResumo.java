@@ -1,7 +1,6 @@
-package br.com.brunoedubems.agendamento.dto.Entrevistador;
+package br.com.brunoedubems.agendamento.dto.entrevistador;
 
 public record EntrevistadorResumo(
         Long id,
         String nome
-) {
-}
+) {}

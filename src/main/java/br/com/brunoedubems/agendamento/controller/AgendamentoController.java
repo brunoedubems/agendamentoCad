@@ -48,7 +48,7 @@ public class AgendamentoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<AgendamentoResponse> update(@PathVariable Long id,
-                                                      @RequestBody @Valid AgendamentoUpdate agendamentoUpdate) {
+                                                      @Valid @RequestBody AgendamentoUpdate agendamentoUpdate) {
         return ResponseEntity.ok(agendamentoService.update(id, agendamentoUpdate));
     }
 

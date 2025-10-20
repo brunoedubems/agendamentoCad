@@ -1,8 +1,9 @@
 package br.com.brunoedubems.agendamento.service;
 
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorRequest;
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResponse;
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResumo;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorRequest;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorResponse;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorResumo;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorUpdateRequest;
 import br.com.brunoedubems.agendamento.entity.Entrevistador;
 import br.com.brunoedubems.agendamento.mapper.EntrevistadorMapper;
 import br.com.brunoedubems.agendamento.repository.EntrevistadorRepository;
@@ -27,7 +28,7 @@ public class EntrevistadorService {
         return mapper.toResponse(entrevistadorSalvo);
     }
 
-    public EntrevistadorResponse update(Long id, EntrevistadorResumo entrevistadorRequest) {
+    public EntrevistadorResponse update(Long id, EntrevistadorUpdateRequest entrevistadorRequest) {
         Entrevistador entity = repository.findById(id).orElseThrow(() -> new RuntimeException("Entrevistador não encontrado com id: " + id));
         Entrevistador entidadeAtualizada = mapper.updateEntityFromDto(entrevistadorRequest, entity);
         return mapper.toResponse(repository.save(entidadeAtualizada));

@@ -1,4 +1,4 @@
-package br.com.brunoedubems.agendamento.dto.Entrevistador;
+package br.com.brunoedubems.agendamento.dto.entrevistador;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,6 @@
 package br.com.brunoedubems.agendamento.dto.agendamento;
 
-import br.com.brunoedubems.agendamento.dto.Entrevistador.EntrevistadorResumo;
+import br.com.brunoedubems.agendamento.dto.entrevistador.EntrevistadorResumo;
 import br.com.brunoedubems.agendamento.enums.StatusAgendamento;
 
 import java.time.LocalDateTime;
