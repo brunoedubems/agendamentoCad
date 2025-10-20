@@ -1,16 +1,5 @@
 spring:
   application:
     name: agendamentoDeEntrevista
-
-  datasource:
-    url: jdbc:postgresql://localhost:5432/agendamento
-    username: postgres
-    password: 123456
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-
-  flyway:
-    enabled: true
+  profiles:
+    active: dev
